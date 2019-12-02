@@ -1,0 +1,2 @@
+include ':app', ':core:database', ':core:network'
+rootProject.name='My Application'
