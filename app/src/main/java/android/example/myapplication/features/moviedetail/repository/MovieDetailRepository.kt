@@ -6,10 +6,18 @@ import io.reactivex.Single
 
 class MovieDetailRepository constructor(
     private val movieDetailApi: MovieDetailApi,
-    private val movieId: String
+    private val movieId: String,
+    private val moviesDetailCache: MovieDetailCache
 ) {
 
     fun getMovie(): Single<MovieDetailModel> {
-        return movieDetailApi.getMovie(movieId)
+        return if (moviesDetailCache.containsKey(movieId)) {
+            moviesDetailCache.get(movieId)!!
+        } else {
+            movieDetailApi.getMovie(movieId).`as` {
+                moviesDetailCache.put(movieId, it)
+                it
+            }
+        }
     }
 }

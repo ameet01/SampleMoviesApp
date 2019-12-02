@@ -1,6 +1,7 @@
 package android.example.myapplication.features.moviedetail.di
 
 import android.example.myapplication.common.ViewModelKey
+import android.example.myapplication.features.moviedetail.repository.MovieDetailCache
 import android.example.myapplication.features.moviedetail.repository.MovieDetailRepository
 import android.example.myapplication.features.moviedetail.usecase.MovieDetailUseCase
 import android.example.myapplication.features.moviedetail.views.MovieDetailViewModel
@@ -35,6 +36,6 @@ class MovieDetailModule {
     @Provides
     @MovieDetailScope
     fun provideMovieDetailRepository(@Named("movieId") movieId: String, movieDetailApi: MovieDetailApi): MovieDetailRepository {
-        return MovieDetailRepository(movieDetailApi, movieId)
+        return MovieDetailRepository(movieDetailApi, movieId, MovieDetailCache())
     }
 }
