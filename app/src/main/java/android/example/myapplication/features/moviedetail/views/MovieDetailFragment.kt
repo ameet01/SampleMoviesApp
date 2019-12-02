@@ -17,16 +17,9 @@ class MovieDetailFragment : Fragment(), FragmentNavigator {
     @Inject
     lateinit var factory: ViewModelProvider.Factory
     private val viewModel by viewModels<MovieDetailViewModel> { factory }
-    private lateinit var movieDetailView: MovieDetailView
 
-    override fun onCreateView(
-        inflater: LayoutInflater,
-        container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View? {
-        movieDetailView = MovieDetailView(container, viewModel, this)
-        setHasOptionsMenu(true)
-        return movieDetailView.view.root
+    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
+        return MovieDetailView(container, viewModel, this).view.root
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -36,7 +29,9 @@ class MovieDetailFragment : Fragment(), FragmentNavigator {
 
     private fun initDi() {
         MainApplication.applicationComponent.movieDetailBuilder()
-            .movieId(arguments?.getString("id") ?: "").build().inject(this)
+            .movieId(arguments?.getString("id") ?: "")
+            .build()
+            .inject(this)
     }
 
     override fun navigate(action: Int, bundle: Bundle) {

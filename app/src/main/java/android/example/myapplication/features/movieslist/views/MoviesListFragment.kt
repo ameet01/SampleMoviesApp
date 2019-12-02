@@ -16,7 +16,6 @@ class MoviesListFragment : Fragment(), FragmentNavigator {
 
     @Inject lateinit var factory: ViewModelProvider.Factory
     private val viewModel by viewModels<MoviesListViewModel> { factory }
-    private lateinit var moviesListView: MoviesListView
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -24,8 +23,7 @@ class MoviesListFragment : Fragment(), FragmentNavigator {
     }
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
-        moviesListView = MoviesListView(container, viewModel, this)
-        return moviesListView.view.root
+        return MoviesListView(container, viewModel, this).view.root
     }
 
     private fun initDi() {
