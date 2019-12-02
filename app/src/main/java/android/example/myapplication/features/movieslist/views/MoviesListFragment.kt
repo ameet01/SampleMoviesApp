@@ -2,7 +2,6 @@ package android.example.myapplication.features.movieslist.views
 
 import android.example.myapplication.MainApplication
 import android.example.myapplication.common.FragmentNavigator
-import android.example.myapplication.common.ViewModelFactory
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -10,15 +9,13 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.ViewModelProvider
-import androidx.lifecycle.ViewModelProviders
 import androidx.navigation.fragment.findNavController
 import javax.inject.Inject
-
 
 class MoviesListFragment : Fragment(), FragmentNavigator {
 
     @Inject lateinit var factory: ViewModelProvider.Factory
-    lateinit var viewModel: MoviesListViewModel
+    private val viewModel by viewModels<MoviesListViewModel> { factory }
     private lateinit var moviesListView: MoviesListView
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -27,7 +24,6 @@ class MoviesListFragment : Fragment(), FragmentNavigator {
     }
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
-        viewModel = ViewModelProviders.of(this, factory).get(MoviesListViewModel::class.java)
         moviesListView = MoviesListView(container, viewModel, this)
         return moviesListView.view.root
     }
