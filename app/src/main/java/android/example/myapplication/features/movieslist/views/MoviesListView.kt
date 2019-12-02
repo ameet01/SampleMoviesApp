@@ -19,7 +19,7 @@ class MoviesListView(
     private val fragment: LifecycleOwner
 ) {
 
-    private val homeListAdapter = MoviesListListAdapter(fragment as FragmentNavigator)
+    private val homeListAdapter = MoviesListAdapter(fragment as FragmentNavigator)
     val view: MoviesListViewBinding = DataBindingUtil.inflate(LayoutInflater.from(parent?.context), LAYOUT_ID, parent, false)
 
     init {

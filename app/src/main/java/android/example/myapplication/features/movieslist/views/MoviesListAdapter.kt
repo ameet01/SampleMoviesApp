@@ -5,8 +5,7 @@ import android.example.network.models.MovieModel
 import android.view.ViewGroup
 import androidx.recyclerview.widget.ListAdapter
 
-
-class MoviesListListAdapter(private val fragmentNavigator: FragmentNavigator) : ListAdapter<MovieModel, MovieItemView.ViewHolder>(MoviesListDiffUtil()) {
+class MoviesListAdapter(private val fragmentNavigator: FragmentNavigator) : ListAdapter<MovieModel, MovieItemView.ViewHolder>(MoviesListDiffUtil()) {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MovieItemView.ViewHolder {
         val movieItem = MovieItemView(parent, fragmentNavigator)

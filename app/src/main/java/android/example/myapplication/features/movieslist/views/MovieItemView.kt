@@ -15,7 +15,9 @@ import kotlinx.android.synthetic.main.movie_item.view.*
 
 class MovieItemView(parent: ViewGroup, private val fragmentNavigator: FragmentNavigator) {
 
-    val binding: MovieItemBinding = inflateDataBinding(parent).also {
+
+    private var movieId: String = ""
+    private val binding: MovieItemBinding = inflateDataBinding(parent).also {
         it.root.setFadeAnimation()
         it.root.movieListItem.setOnClickListener {
             val bundle = bundleOf("id" to movieId)
@@ -24,8 +26,6 @@ class MovieItemView(parent: ViewGroup, private val fragmentNavigator: FragmentNa
             fragmentNavigator.navigate(action, bundle)
         }
     }
-    private var movieId: String = ""
-
 
     private fun inflateDataBinding(parent: ViewGroup): MovieItemBinding {
         return DataBindingUtil.inflate(
