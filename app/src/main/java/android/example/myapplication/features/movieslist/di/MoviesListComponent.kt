@@ -10,10 +10,8 @@ import javax.inject.Scope
 annotation class MoviesListScope
 
 @MoviesListScope
-@Subcomponent(modules = [MoviesListModule::class])
+@Subcomponent(modules = [MoviesListModule::class, MoviesListViewModelModule::class])
 interface MoviesListComponent {
-
-    val moviesApi: MoviesApi
 
     fun inject(moviesListFragment: MoviesListFragment)
 }

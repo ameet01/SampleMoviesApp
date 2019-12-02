@@ -4,16 +4,17 @@ import android.example.myapplication.MainApplication
 import android.example.myapplication.di.modules.ApplicationModule
 import android.example.myapplication.di.modules.DatabaseModule
 import android.example.myapplication.di.modules.NetworkModule
+import android.example.myapplication.di.modules.ViewModelModule
 import android.example.myapplication.features.moviedetail.di.MovieDetailComponent
 import android.example.myapplication.features.movieslist.di.MoviesListComponent
 import dagger.Component
 import javax.inject.Singleton
 
-@Singleton
 @Component(
     modules = [NetworkModule::class,
-               DatabaseModule::class,
-               ApplicationModule::class]
+        DatabaseModule::class,
+        ViewModelModule::class,
+        ApplicationModule::class]
 )
 interface ApplicationComponent {
 

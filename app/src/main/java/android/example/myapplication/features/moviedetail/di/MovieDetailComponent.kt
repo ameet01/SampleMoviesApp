@@ -15,7 +15,7 @@ annotation class MovieDetailScope
 annotation class Named(val value: String = "")
 
 @MovieDetailScope
-@Subcomponent(modules = [MovieDetailModule::class])
+@Subcomponent(modules = [MovieDetailModule::class, MoviesDetailViewModelModule::class])
 interface MovieDetailComponent {
 
     fun inject(movieDetailFragment: MovieDetailFragment)

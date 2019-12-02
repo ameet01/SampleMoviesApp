@@ -15,11 +15,9 @@ import javax.inject.Singleton
 @Module
 class NetworkModule {
 
-    @Singleton
     @Provides
     fun createCustomInterceptor(): Interceptor = QueryParameterInterceptor()
 
-    @Singleton
     @Provides
     fun providesOkHttpClient(interceptor: Interceptor): OkHttpClient {
         return OkHttpClient.Builder()
@@ -28,7 +26,6 @@ class NetworkModule {
     }
 
     @Provides
-    @Singleton
     fun providesRetrofitInstance(okHttpClient: OkHttpClient): Retrofit {
         return Retrofit.Builder()
             .baseUrl(MoviesInfo.BASE_URL)
